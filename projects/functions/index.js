@@ -13,7 +13,7 @@
  Другими словами: функция должна возвращать в неизменном виде то, что поступает ей на вход
  */
 function returnFirstArgument(arg) {
-  return arg
+  return arg;
 }
 
 /*
@@ -43,7 +43,7 @@ function sumWithDefaults(a, b=100) {
    returnFnResult(() => 'привет') вернет 'привет'
  */
 function returnFnResult(func) {
-  return func()
+  return func();
 }
 
 /*
