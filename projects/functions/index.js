@@ -30,7 +30,7 @@ function returnFirstArgument(arg) {
  Пример:
    sumWithDefaults(10) вернет 110
  */
-function sumWithDefaults(a, b=100) {
+function sumWithDefaults(a, b = 100) {
   return a + b;
 }
 
@@ -60,7 +60,7 @@ function returnFnResult(func) {
    console.log(f()); // выведет 13
  */
 function returnCounter(number = 0) {
-  return () => ++ number;
+  return () => ++number;
 }
 
 /*
