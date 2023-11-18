@@ -135,7 +135,7 @@ function calculator(number = 0) {
       return args.reduce((all, current) => all / current, number)
     },
     mul: (...args) => {
-      return number * args.reduce((all, current) => all * current)
+      return args.reduce((all, current) => all * current, number)
     },
   }
 }

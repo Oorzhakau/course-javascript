@@ -26,7 +26,7 @@ function forEach(array, func) {
    console.log(newArray); // выведет [1, 4, 9]
  */
 function map(arr, func) {
-  var new_arr = [];
+  const new_arr = [];
   for(const [idx, item] of arr.entries()) {
     new_arr.push(func(item, idx, arr));
   }
