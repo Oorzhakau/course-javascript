@@ -24,21 +24,23 @@ export default {
       element.style.backgroundImage = `url(${size.url})`;
       photosComp.append(element);
     }
-
   },
 
   handleEvents() {
-    document.querySelector('.component-user-photos').addEventListener('click', async (e) => {
-      if (e.target.classList.contains('component-user-photo')) {
-        const photoId = e.target.dataset.id;
-        const firendsPhotos = await model.getPhotos(this.user.id);
-        const photo = firendsPhotos.items.find((photo) =>  photo.id == photoId);
-        const size = model.findSize(photo);
+    document
+      .querySelector('.component-user-photos')
+      .addEventListener('click', async (e) => {
+        if (e.target.classList.contains('component-user-photo')) {
+          const photoId = e.target.dataset.id;
+          const firendsPhotos = await model.getPhotos(this.user.id);
+          const photo = firendsPhotos.items.find((photo) => photo.id === photoId);
+          const photoStats = await model.photoStats(photoId);
+          const size = model.findSize(photo);
 
-        mainPage.setFriendAndPhoto(this.user, parseInt(photoId), size.url);
-        pages.openPage('main');
-      }
-    });
+          mainPage.setFriendAndPhoto(this.user, parseInt(photoId), size.url, photoStats);
+          pages.openPage('main');
+        }
+      });
 
     document.querySelector('.page-profile-back').addEventListener('click', async (e) => {
       pages.openPage('main');
