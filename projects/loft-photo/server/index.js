@@ -20,11 +20,11 @@ const methods = {
 
     if (photoLikes.get(vkUser.id)) {
       photoLikes.delete(vkUser.id);
-      return {likes: photoLikes.size, liked: false};
+      return { likes: photoLikes.size, liked: false };
     }
 
     photoLikes.set(vkUser.id, true);
-    return { likes: photoLikes.size, liked: true};
+    return { likes: photoLikes.size, liked: true };
   },
   photoStats(req, res, url, vkUser) {
     const photoId = url.searchParams.get('photo');
@@ -45,7 +45,7 @@ const methods = {
       DB.comments.set(photoId, photoComments);
     }
 
-    photoComments.unshift({user: vkUser, text: body.text});
+    photoComments.unshift({ user: vkUser, text: body.text });
   },
   getComments(req, res, url) {
     const photoId = url.searchParams.get('photo');
@@ -57,7 +57,6 @@ http
   .createServer(async (req, res) => {
     console.log('➡️ Поступил запрос:', req.method, req.url);
     const token = req.headers['vk_token'];
-    console.log('vk_token', token);
     const parsed = new url.URL(req.url, 'http://localhost');
     const vkUser = await getMe(token);
     const body = await readBody(req);
